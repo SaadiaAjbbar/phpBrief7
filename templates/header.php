@@ -18,6 +18,8 @@
          <li><a href="/services" class="<?= $page === '/services' ? 'text-[#FA871F]' : '' ?>">Services</a></li>
          <li><a href="/about" class="<?= $page === '/about' ? 'text-[#FA871F]' : '' ?>">À propos</a></li>
          <li><a href="/contact" class="<?= $page === '/contact' ? 'text-[#FA871F]' : '' ?>">Contact</a></li>
+         <li><a href="/register" class="<?= $page === '/register' ? 'text-[#FA871F]' : '' ?>">Register</a></li>
+         
        </ul>
      </nav>
    </header>

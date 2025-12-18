@@ -7,6 +7,8 @@ $allPages = [
     "/contact" => "controllers/contact.controller.php",
     "/services" => "controllers/services.controller.php",
     "/about" => "controllers/about.controller.php",
+    "/register" => "controllers/register.controller.php"
+    
 ];
 
 if (isset($allPages[$page])) {

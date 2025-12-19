@@ -45,8 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 }
 
 if (empty($errors) && !empty($email)) {
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         $requete = "INSERT INTO users (name, email, password, created_at)
-                VALUES ('$name', '$email', '$password', NOW())";
+                VALUES ('$name', '$email', '$hashed_password', NOW())";
         if (mysqli_query($connexion, $requete)==true) {
             $success = "Utilisateur bien ete ajoute";
             $name = $email = $password = '';

@@ -6,6 +6,9 @@ $name = '';
 $email = '';
 $password = '';
 
+require_once __DIR__ . '/../config/bd.php';
+
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $name = trim($_POST['name']);
     $email = trim($_POST['email']);
@@ -34,13 +37,23 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     }if (empty($password)) {
         $errors[] = "Le passwword ne doit pas etre vide";
     } elseif (!preg_match("/^[a-zA-Z0-9\s]{10,100}$/", $password)) {
-
         if(strlen($password)<6){
             $errors[] = "Le password est trop court doit avoir plus de 6 caracteres";
         }
         
     }
 }
+
+if (empty($errors) && !empty($email)) {
+        $requete = "INSERT INTO users (name, email, password, created_at)
+                VALUES ('$name', '$email', '$password', NOW())";
+        if (mysqli_query($connexion, $requete)==true) {
+            $success = "Utilisateur bien ete ajoute";
+            $name = $email = $password = '';
+        } else {
+            $errors[] = "erreur d'inscription";
+        }
+    }
 
 
 require 'templates/header.php';

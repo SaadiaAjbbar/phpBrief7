@@ -30,32 +30,45 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Le passwword ne doit pas etre vide";
     } elseif (!preg_match("/^[a-zA-Z0-9\s]{10,100}$/", $password)) {
 
-        if(strlen($password)<6){
+        if (strlen($password) < 6) {
             $errors[] = "Le password est trop court doit avoir plus de 6 caracteres";
         }
-        
-    }if (empty($password)) {
+    }
+    if (empty($password)) {
         $errors[] = "Le passwword ne doit pas etre vide";
     } elseif (!preg_match("/^[a-zA-Z0-9\s]{10,100}$/", $password)) {
-        if(strlen($password)<6){
+        if (strlen($password) < 6) {
             $errors[] = "Le password est trop court doit avoir plus de 6 caracteres";
         }
-        
     }
 }
 
+
+
+
 if (empty($errors) && !empty($email)) {
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        $requete = "INSERT INTO users (name, email, password, created_at)
-                VALUES ('$name', '$email', '$hashed_password', NOW())";
-        if (mysqli_query($connexion, $requete)==true) {
-            $success = "Utilisateur bien ete ajoute";
-            $name = $email = $password = '';
-        } else {
-            $errors[] = "erreur d'inscription";
-        }
+
+    $sql = mysqli_query($connexion, "SELECT * FROM users WHERE email='$email'");
+    $rows = false;
+    if (mysqli_num_rows($sql) == 0) {
+        $rows = true;
     }
 
+    if ($rows) {
+        $requete = "INSERT INTO users (name, email, password, created_at)
+                VALUES ('$name', '$email', '$hashed_password', NOW())";
+    if (mysqli_query($connexion, $requete) == true) {
+        $success = "Utilisateur bien ete ajoute";
+        $name = $email = $password = '';
+    } else {
+        $errors[] = "erreur d'inscription";
+    }
+    } else {
+         $errors[] = "deja existe un comptz avec cet email";
+    }
+    
+}
 
 require 'templates/header.php';
 require 'views/register.view.php';

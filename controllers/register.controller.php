@@ -34,13 +34,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors[] = "Le password est trop court doit avoir plus de 6 caracteres";
         }
     }
-    if (empty($password)) {
-        $errors[] = "Le passwword ne doit pas etre vide";
-    } elseif (!preg_match("/^[a-zA-Z0-9\s]{10,100}$/", $password)) {
-        if (strlen($password) < 6) {
-            $errors[] = "Le password est trop court doit avoir plus de 6 caracteres";
-        }
-    }
+    
 }
 
 

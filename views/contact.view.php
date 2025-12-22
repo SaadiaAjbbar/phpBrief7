@@ -1,5 +1,5 @@
 <section class="container mx-auto py-16 mb-36">
-    <h2 class="text-3xl font-bold mb-6 text-center text-white">Contactez-nous</h2>
+    <h2 class="text-3xl font-bold mb-6 text-center text-black">Contactez-nous</h2>
 
     <?php if (!empty($errors)) : ?>
         <div class="bg-red-300 text-red-500 p-3 rounded mb-5 max-w-xl mx-auto">

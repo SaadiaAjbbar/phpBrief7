@@ -227,9 +227,6 @@
   .ml-3 {
     margin-left: calc(var(--spacing) * 3);
   }
-  .ml-3\.5 {
-    margin-left: calc(var(--spacing) * 3.5);
-  }
   .flex {
     display: flex;
   }
@@ -313,9 +310,6 @@
   }
   .bg-white {
     background-color: var(--color-white);
-  }
-  .bg-\[url\(\'\.\.\/assets\/contact\.png\'\)\] {
-    background-image: url('../assets/contact.png');
   }
   .bg-\[url\(\'assets\/notFoundpng\.jpg\'\)\] {
     background-image: url('assets/notFoundpng.jpg');
@@ -401,6 +395,9 @@
   }
   .text-\[\#FA871F\] {
     color: #FA871F;
+  }
+  .text-black {
+    color: var(--color-black);
   }
   .text-gray-600 {
     color: var(--color-gray-600);

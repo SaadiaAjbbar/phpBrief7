@@ -9,6 +9,8 @@ $allPages = [
     "/about" => "controllers/about.controller.php",
     "/register" => "controllers/register.controller.php",
     "/login" => "controllers/login.controller.php",
+    "/profile" => "controllers/profile.controller.php",
+    
 ];
 
 if (isset($allPages[$page])) {

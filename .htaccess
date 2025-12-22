@@ -1,0 +1,11 @@
+<IFModule mod_rewrite.c>
+
+
+RewriteEngine On
+RewriteBase /
+
+# Si ce n'est pas un fichier existant
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [QSA,L]
+
+</IFModule>

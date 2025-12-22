@@ -1,8 +1,6 @@
 <?php 
 $page = "/login";
-session_start();
 $errors = [];
-
 require_once __DIR__ . '/../config/bd.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -35,7 +33,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (password_verify($password, $user['password'])) {
 
-                $_SESSION['user_id'] = $user['id'];
+                $_SESSION['user'] = [
+                    'id' => $user['id'],
+                    'name' => $user['name'],
+                    'email' => $user['email']
+                ];
                 header("Location: /profile");
                 exit;
 

@@ -10,7 +10,7 @@ $allPages = [
     "/register" => "controllers/register.controller.php",
     "/login" => "controllers/login.controller.php",
     "/profile" => "controllers/profile.controller.php",
-    
+    "/logout"  => "controllers/logout.controller.php"
 ];
 
 if (isset($allPages[$page])) {

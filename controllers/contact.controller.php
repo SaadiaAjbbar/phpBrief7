@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
     }
 
-    if (empty($errors)) {
+    if (empty($errors)&& !empty($email)) {
         $requete = "
             INSERT INTO contacts (name, email, message, created_at)
             VALUES ('$nom', '$email', '$message', NOW())

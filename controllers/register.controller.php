@@ -52,12 +52,12 @@ if (empty($errors) && !empty($email)) {
     if ($rows) {
         $requete = "INSERT INTO users (name, email, password, created_at)
                 VALUES ('$name', '$email', '$hashed_password', NOW())";
-    if (mysqli_query($connexion, $requete) == true) {
+     if (mysqli_query($connexion, $requete) == true) {
         $success = "Utilisateur bien ete ajoute";
         $name = $email = $password = '';
-    } else {
+     } else {
         $errors[] = "erreur d'inscription";
-    }
+     }
     } else {
          $errors[] = "deja existe un comptz avec cet email";
     }

@@ -5,6 +5,7 @@ $success = '';
 $nom = '';
 $email = '';
 $message = '';
+require_once __DIR__ . '/../config/bd.php';
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $nom = trim($_POST['nom']);
@@ -27,19 +28,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Le message ne doit pas etre vide";
     } elseif (!preg_match("/^[a-zA-Z0-9\s]{10,100}$/", $message)) {
 
-        if(strlen($message)<10){
+        if (strlen($message) < 10) {
             $errors[] = "Le message est trop court";
-        }else{
+        } else {
             $errors[] = "Le message est trop long";
         }
-        
     }
 
     if (empty($errors)) {
-        $success = "Votre message a ete envoye !";
-        $nom ='';
-        $email ='';
-        $message = '';
+        $requete = "
+            INSERT INTO contacts (name, email, message, created_at)
+            VALUES ('$nom', '$email', '$message', NOW())
+        ";
+
+        if (mysqli_query($connexion, $requete)) {
+            $success = "Votre message a bien été envoyé";
+            $nom = '';
+            $email = '';
+            $message = '';
+        } else {
+            $errors[] = "Erreur lors de l'envoi du message";
+        }
     }
 }
 
